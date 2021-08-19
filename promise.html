@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //resolve,reject,all,ract
+      //resolve == then ,reject == catch
+
+      // let promise = new Promise((resolve, reject) => {
+      //     resolve(111);
+      // });
+
+      // promise
+      //     .then((response) => {
+      //         console.log("成功");
+      //         console.log(response);
+      //     })
+      //     .catch((error) => {
+      //         console.log("失败");
+      //         console.log(error);
+      //     });
+
+      function promise1(status) {
+        return new Promise((resolve, reject) => {
+          if (status) {
+            console.log("第一个promise成功");
+            resolve("第一个promise返回数据成功");
+          }
+          if (!status) {
+            console.log("第一个promise失败");
+            resolve("第一个promise返回数据失败");
+          }
+        });
+      }
+
+      function promise2(status) {
+        return new Promise((resolve, reject) => {
+          if (status) {
+            console.log("第2个promise成功");
+            resolve("第2个promise返回数据成功");
+          }
+          if (!status) {
+            console.log("第2个promise失败");
+            resolve("第2个promise返回数据失败");
+          }
+        });
+      }
+
+      function promise3(status) {
+        return new Promise((resolve, reject) => {
+          if (status) {
+            console.log("第3个promise成功");
+            resolve("第3个promise返回数据成功");
+          }
+          if (!status) {
+            console.log("第3个promise失败");
+            resolve("第3个promise返回数据失败");
+          }
+        });
+      }
+
+      function promise4(status) {
+        return new Promise((resolve, reject) => {
+          if (status) {
+            console.log("第4个promise成功");
+            resolve("第4个promise返回数据成功");
+          }
+          if (!status) {
+            console.log("第4个promise失败");
+            resolve("第4个promise返回数据失败");
+          }
+        });
+      }
+
+      //链式
+      // promise1(true).then(response => {
+      //     console.log(response)
+      //     //返回参数，判断是否执行第二个promise
+      //     return promise2(true)
+      // })
+      // .then(response =>{
+      //     console.log(response)
+      //     return promise3(true)
+      // })
+      // .then(response =>{
+      //     console.log(response)
+      //     return promise4(true)
+      // })
+      // .then(response =>{
+      //     console.log(response)
+      // })
+      // .catch(error => {
+      //     console.log(error)
+      // })
+
+      //all方法，数组内有promise必须全部执行成功，才会执行then回调，只有一个不成功就会执行cathe
+      //race方法(Poromise.race)，数组内只要有一个返回resolve，就代表成功。
+      //但是，如果第一个是返回reject，那么就失败了
+      Promise.all([promise1(true), promise2(true), promise3(true)])
+        .then((response) => {
+          console.log("全部调用成功");
+        })
+        .catch((error) => {
+          console.log("有些可能失败了");
+        });
+
+
+    </script>
+  </body>
+</html>
